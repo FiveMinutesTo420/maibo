@@ -13,8 +13,9 @@
     @yield('head')
  
 </head>
-<body class="overflow-x-clip">
-    <header class="sticky top-0 z-50 bg-white drop-shadow ">
+<body >
+    <div class="overflow-x-hidden">
+        <header class="sticky top-0 z-50 bg-white drop-shadow ">
         
             <div class="lg:w-[64%] w-[80%] mx-auto flex py-4 justify-between">
                 <a href="/" class="font-semibold text-xl">MAIBO</a>
@@ -42,6 +43,8 @@
         <div class="lg:w-[64%] w-[80%] mx-auto">
         </div>
     </footer>
+    </div>
+
     <script>
         document.getElementById('menu').addEventListener('click',function(){
             if(document.getElementById('menu_bar').classList.contains('-right-[300px]')){
