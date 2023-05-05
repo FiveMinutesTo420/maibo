@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title',"Главная")
 @section('content')
-<div class="w-4/5 mx-auto">
+<div class="lg:w-[64%] w-[80%] mx-auto">
     <div class="text-center mt-12 text-3xl">Онлайн-запись на приём в клиники Якутска</div>
 
     <div class="flex w-full justify-center border-b pb-6">

@@ -13,10 +13,10 @@
     @yield('head')
  
 </head>
-<body>
+<body class="overflow-x-clip">
     <header class="sticky top-0 z-50 bg-white drop-shadow ">
         
-            <div class="w-[64%] mx-auto flex py-4 justify-between">
+            <div class="lg:w-[64%] w-[80%] mx-auto flex py-4 justify-between">
                 <a href="/" class="font-semibold text-xl">MAIBO</a>
                 <div class="lg:flex space-x-8 items-center hidden">
                     <a href="/" class="hover:border-black border-transparent border-b">Главная</a>
@@ -24,15 +24,37 @@
                     <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b">Врачи</a>
                     <a href="" class="hover:border-black border-transparent border-b">Диагностика</a>
                 </div>
+                <img src="{{url('images/burger.svg')}}" width="20" class="lg:hidden cursor-pointer" id="menu" alt="">
             </div>
-
+            <div class="-right-[300px] lg:hidden absolute w-[200px] h-full ml-[300px] transition-all" id="menu_bar" >
+                <div class="flex flex-col p-4 space-y-4 bg-white">
+                    <a href="/" class="hover:border-black border-transparent border-b pb-2">Главная</a>
+                    <a href="{{route('clinics')}}" class="hover:border-black border-transparent border-b pb-2">Клиники</a>
+                    <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b pb-2">Врачи</a>
+                    <a href="" class="hover:border-black border-transparent border-b pb-2">Диагностика</a>
+                </div>
+            </div>
     </header>
     <main class="min-h-[100vh]">
         @yield('content')
     </main>
     <footer>
-        <div class="w-4/5 mx-auto">
+        <div class="lg:w-[64%] w-[80%] mx-auto">
         </div>
     </footer>
+    <script>
+        document.getElementById('menu').addEventListener('click',function(){
+            if(document.getElementById('menu_bar').classList.contains('-right-[300px]')){
+                document.getElementById('menu_bar').classList.remove('hidden');
+                document.getElementById('menu_bar').classList.remove('-right-[300px]');
+                document.getElementById('menu_bar').classList.add('right-0');
+            }else{
+                document.getElementById('menu_bar').classList.add('-right-[300px]');
+                document.getElementById('menu_bar').classList.remove('right-0');
+
+            }
+
+        })
+    </script>
 </body>
 </html>

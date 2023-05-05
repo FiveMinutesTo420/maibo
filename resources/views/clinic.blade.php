@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title',$clinic->name)
 @section('content')
-<div class="w-[64%] mx-auto py-4">
+<div class="lg:w-[64%] w-[80%] mx-auto py-4">
     <div class="flex flex-col space-y-8">
 
 

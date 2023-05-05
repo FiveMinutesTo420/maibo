@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title','Врачи')
 @section('content')
-<div class="w-[64%] mx-auto py-4">
+<div class="lg:w-[64%] w-[80%] mx-auto py-4">
     <div class="flex flex-col space-y-4">
         <h1 class="text-2xl mt-4">Врачи Якутска</h1>
         <div class="flex space-x-2 items-center">
