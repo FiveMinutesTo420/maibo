@@ -15,7 +15,7 @@
     -->
     </div>
 
-    <div class="flex mt-8 w-4/5 mx-auto justify-between">
+    <div class="lg:flex mt-8 w-4/5 mx-auto lg:justify-between space-y-8 lg:space-y-0">
         <div class="flex flex-col w-[300px]">
             <p class="text-xl ">Врачи</p>
             <div class="flex flex-col space-y-3 mt-4">

@@ -15,17 +15,16 @@
 </head>
 <body>
     <header class="sticky top-0 z-50 bg-white drop-shadow ">
-        <div class="w-4/5 mx-auto">
-            <div class="w-4/5 mx-auto flex py-4 justify-between">
+        
+            <div class="w-[64%] mx-auto flex py-4 justify-between">
                 <a href="/" class="font-semibold text-xl">MAIBO</a>
-                <div class="flex space-x-8 items-center">
+                <div class="lg:flex space-x-8 items-center hidden">
                     <a href="/" class="hover:border-black border-transparent border-b">Главная</a>
                     <a href="{{route('clinics')}}" class="hover:border-black border-transparent border-b">Клиники</a>
                     <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b">Врачи</a>
                     <a href="" class="hover:border-black border-transparent border-b">Диагностика</a>
                 </div>
             </div>
-        </div>
 
     </header>
     <main class="min-h-[100vh]">
