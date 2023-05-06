@@ -18,12 +18,16 @@
         <header class="sticky top-0 z-50 bg-white drop-shadow ">
         
             <div class="lg:w-[64%] w-[80%] mx-auto flex py-4 justify-between">
-                <a href="/" class="font-semibold text-xl">MAIBO</a>
+                <a href="/" class="font-semibold text-xl flex items-center space-x-3">
+                    <img src="{{url('images/favicon.png')}}" alt="" class="w-8">
+                    <p>MAIBO</p>
+                
+                </a>
                 <div class="lg:flex space-x-8 items-center hidden">
                     <a href="/" class="hover:border-black border-transparent border-b">Главная</a>
                     <a href="{{route('clinics')}}" class="hover:border-black border-transparent border-b">Клиники</a>
                     <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b">Врачи</a>
-                    <a href="" class="hover:border-black border-transparent border-b">Диагностика</a>
+                    <a href="" class="hover:border-black border-transparent border-b">Админ панель</a>
                 </div>
                 <img src="{{url('images/burger.svg')}}" width="20" class="lg:hidden cursor-pointer" id="menu" alt="">
             </div>
@@ -32,7 +36,8 @@
                     <a href="/" class="hover:border-black border-transparent border-b pb-2">Главная</a>
                     <a href="{{route('clinics')}}" class="hover:border-black border-transparent border-b pb-2">Клиники</a>
                     <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b pb-2">Врачи</a>
-                    <a href="" class="hover:border-black border-transparent border-b pb-2">Диагностика</a>
+                    <a href="" class="hover:border-black border-transparent border-b pb-2">Админ панель</a>
+
                 </div>
             </div>
     </header>

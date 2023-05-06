@@ -117,7 +117,7 @@
                         <input type="hidden" name="date" value="" id="dateHidden{{$doctor->id}}">
                         <input type="text" name="fullName" required placeholder="Ваше полное имя" class="p-4 border outline-none">
                         <input type="text" name="phone_number" required placeholder="Ваш контактный номер" class="p-4 border outline-none">
-                        <textarea name="comment" cols="35" rows="2" required placeholder="Комментарий (необязательно)" class="p-4 border outline-none"></textarea>
+                        <textarea name="comment" cols="35" rows="2" placeholder="Комментарий (необязательно)" class="p-4 border outline-none"></textarea>
                         <input type="submit" value="Записаться" class="border py-4 cursor-pointer">
                     </form>
 

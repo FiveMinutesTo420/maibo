@@ -3,7 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-#TODO::Админка.
+#TODO:: Редактирование и добавление специалистов клиники.Редактирование и добавление организаций.Редактирование и добавление услуг.Возможность изменения и удаления записей в датах.
 Route::get('/', HomeController::class);
 Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors');
 Route::get('/clinics', [HomeController::class, 'clinics'])->name('clinics');
