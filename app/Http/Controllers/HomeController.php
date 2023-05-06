@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\Service;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
+use App\Models\Appointment;
 
 class HomeController extends Controller
 {
@@ -56,5 +57,16 @@ class HomeController extends Controller
     {
         $servicea = Service::where('slug', $service)->first();
         return view('service', ['service' => $servicea]);
+    }
+    public function appoint(Request $request, Clinic $clinic, Doctor $doctor)
+    {
+        $data = $request->all();
+        $data['doctor_id'] = $doctor->id;
+        $data['clinic_id'] = $clinic->id;
+        if ($data['date'] == null) {
+            return back()->with('error', 'Выберите день');
+        }
+        Appointment::create($data);
+        return back()->with('success', 'Ваша заявка была успешно принята. <br> Явиться в ' . $clinic->address . ". <br> В назначенное время:" . $data['date']);
     }
 }

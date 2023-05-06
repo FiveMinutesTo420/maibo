@@ -37,6 +37,12 @@
             </div>
     </header>
     <main class="min-h-[100vh]">
+        @if(Session::has('error'))
+        <div class="text-white mt-4 lg:w-[64%] mx-auto bg-red-500 p-4 ">{!!Session::get('error')!!}</div>
+        @endif
+        @if(Session::has('success'))
+        <div class="text-white mt-4 lg:w-[64%] mx-auto bg-green-500 p-4 ">{!!Session::get('success')!!}</div>
+        @endif
         @yield('content')
     </main>
     <footer>
