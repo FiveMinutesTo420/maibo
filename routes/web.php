@@ -3,7 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-#TODO::Моб.Версию Списка клиник, запись, админка.
+#TODO::Админка.
 Route::get('/', HomeController::class);
 Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors');
 Route::get('/clinics', [HomeController::class, 'clinics'])->name('clinics');
