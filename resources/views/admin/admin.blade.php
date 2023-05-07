@@ -4,7 +4,7 @@
 <div class="lg:w-[64%] w-[80%] mx-auto py-4">
     <div class="flex flex-col space-y-8">
         <p class="text-xl font-semibold">Специалисты</p>
-        <a href="" class="p-4 border w-full lg:w-60 text-center">+ Добавить специалиста</a>
+        <a href="{{route('docAdd')}}" class="p-4 border w-full lg:w-60 text-center">+ Добавить специалиста</a>
         <div class="flex flex-col space-y-4 h-[53vh] overflow-y-scroll">
             @foreach($doctors as $doctor)
             <div class="lg:flex p-4 lg:space-x-4 border rounded i  justify-between">
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="lg:w-[40%] text-sm flex flex-col items-center lg:border-l p-4 justify-center space-y-2">
-                  <a href="" class="p-4 border w-40 text-center">Редактировать</a>
-                  <a href="" class="p-4 border w-40 text-center">Удалить</a>
+                  <a href="{{route('docEdit',$doctor)}}" class="p-4 border w-40 text-center">Редактировать</a>
+                  <a href="{{route('doctor.delete',$doctor)}}" class="p-4 border w-40 text-center">Удалить</a>
                     
                 </div>
                 
@@ -32,15 +32,15 @@
         </div>
         <div class="flex flex-col space-y-8">
             <p class="text-xl font-semibold">Услуги</p>
-        <a href="" class="p-4 border w-full lg:w-60 text-center">+ Добавить услугу</a>
+            <a href="{{route('add.service')}}" class="p-4 border w-full lg:w-60 text-center">+ Добавить услугу</a>
 
             <div class="flex flex-col space-y-4 h-[53vh] overflow-y-scroll">
                 @foreach($services as $service)
                 <div class="lg:flex p-4 lg:space-x-4 border rounded space-y-4 lg:space-y-0 items-center  justify-between">
                     <p>{{$service->name}}</p>
                     <div class="flex">
-                        <a href="" class="p-4 border w-40 text-center">Редактировать</a>
-                        <a href="" class="p-4 border w-40 text-center">Удалить</a>
+                        <a href="{{route('update.service',$service)}}" class="p-4 border w-40 text-center">Редактировать</a>
+                        <a href="{{route('delete.service',$service)}}" class="p-4 border w-40 text-center">Удалить</a>
                     </div>
                 </div>
                 @endforeach
@@ -49,7 +49,7 @@
         </div>
         <div class="flex flex-col space-y-8">
             <h1 class="text-2xl mt-4">Клиники</h1>
-            <a href="" class="p-4 border w-full lg:w-60 text-center">+ Добавить клинику</a>
+            <a href="{{route('add.clinic')}}" class="p-4 border w-full lg:w-60 text-center">+ Добавить клинику</a>
 
             <div class="flex flex-col space-y-4 h-[53vh] overflow-y-scroll">
             @foreach($clinics as $clinic)
@@ -69,8 +69,8 @@
                         </div>
                     </a>
                     <div class="flex items-center justify-center">
-                        <a href="" class="p-4 border w-40 text-center">Редактировать</a>
-                        <a href="" class="p-4 border w-40 text-center">Удалить</a>
+                        <a href="{{route('change.clinic',$clinic)}}" class="p-4 border w-40 text-center">Редактировать</a>
+                        <a href="{{route('delete.clinic',$clinic)}}" class="p-4 border w-40 text-center">Удалить</a>
                     </div>
     
                 </div>
