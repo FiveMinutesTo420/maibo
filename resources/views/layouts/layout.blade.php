@@ -11,7 +11,17 @@
     <link rel="icon" type="image/x-icon" href="{{url('images/favicon.png')}}">
     @vite('resources/css/app.css')
     @yield('head')
- 
+    <style>
+        *::-webkit-scrollbar {
+            width: 10px;
+        }
+        *::-webkit-scrollbar-track {
+            background-color: #F1F1F1;
+        }
+        *::-webkit-scrollbar-thumb {
+            background-color: #FFBC00;
+        }
+    </style>
 </head>
 <body >
     <div class="overflow-x-hidden">
@@ -27,7 +37,7 @@
                     <a href="/" class="hover:border-black border-transparent border-b">Главная</a>
                     <a href="{{route('clinics')}}" class="hover:border-black border-transparent border-b">Клиники</a>
                     <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b">Врачи</a>
-                    <a href="" class="hover:border-black border-transparent border-b">Админ панель</a>
+                    <a href="{{route('admin')}}" class="hover:border-black border-transparent border-b">Админ панель</a>
                 </div>
                 <img src="{{url('images/burger.svg')}}" width="20" class="lg:hidden cursor-pointer" id="menu" alt="">
             </div>
@@ -36,7 +46,7 @@
                     <a href="/" class="hover:border-black border-transparent border-b pb-2">Главная</a>
                     <a href="{{route('clinics')}}" class="hover:border-black border-transparent border-b pb-2">Клиники</a>
                     <a href="{{route('doctors')}}" class="hover:border-black border-transparent border-b pb-2">Врачи</a>
-                    <a href="" class="hover:border-black border-transparent border-b pb-2">Админ панель</a>
+                    <a href="{{route('admin')}}" class="hover:border-black border-transparent border-b pb-2">Админ панель</a>
 
                 </div>
             </div>
