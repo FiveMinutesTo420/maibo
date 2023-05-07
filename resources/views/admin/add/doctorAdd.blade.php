@@ -11,7 +11,7 @@
                         <p>Фамилия</p>
                     </div>
                     <div>
-                        <input type="text" name="surname" class="border p-2 w-full">
+                        <input type="text" name="surname" required class="border p-2 w-full">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -19,7 +19,7 @@
                         <p>Имя</p>
                     </div>
                     <div>
-                        <input type="text" name="name" class="border p-2 w-full">
+                        <input type="text" name="name" required class="border p-2 w-full">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -27,7 +27,7 @@
                         <p>Отчество</p>
                     </div>
                     <div>
-                        <input type="text" name="patronymic" class="border p-2 w-full">
+                        <input type="text" name="patronymic" required class="border p-2 w-full">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -47,7 +47,7 @@
                         <p>Стаж</p>
                     </div>
                     <div>
-                        <input type="text" name="experience" class="border p-2 w-full">
+                        <input type="number" name="experience" required class="border p-2 w-full">
                     </div>
                 </div>
                 <input type="submit" value="Добавить" class="border p-3">

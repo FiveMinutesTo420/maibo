@@ -11,7 +11,7 @@
                         <p>Фамилия</p>
                     </div>
                     <div>
-                        <input type="text" name="surname" class="border p-2 w-full" value="{{$doctor->surname}}">
+                        <input type="text" name="surname" required class="border p-2 w-full" value="{{$doctor->surname}}">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -19,7 +19,7 @@
                         <p>Имя</p>
                     </div>
                     <div>
-                        <input type="text" name="name" class="border p-2 w-full"  value="{{$doctor->name}}">
+                        <input type="text" name="name" required class="border p-2 w-full"  value="{{$doctor->name}}">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -27,7 +27,7 @@
                         <p>Отчество</p>
                     </div>
                     <div>
-                        <input type="text" name="patronymic" class="border p-2 w-full "  value="{{$doctor->patronymic}}">
+                        <input type="text" name="patronymic" required class="border p-2 w-full "  value="{{$doctor->patronymic}}">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -47,7 +47,7 @@
                         <p>Стаж</p>
                     </div>
                     <div>
-                        <input type="text" name="experience" class="border p-2 w-full "  value="{{$doctor->experience}}">
+                        <input type="text" name="experience" required class="border p-2 w-full "  value="{{$doctor->experience}}">
                     </div>
                 </div>
                 <input type="submit" value="Добавить" class="border p-3">

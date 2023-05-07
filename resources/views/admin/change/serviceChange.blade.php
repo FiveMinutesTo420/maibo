@@ -11,7 +11,7 @@
                         <p>Наименование услуги</p>
                     </div>
                     <div>
-                        <input type="text" name="name" class="border p-2 w-full" value="{{$service->name}}">
+                        <input type="text" name="name" required class="border p-2 w-full" value="{{$service->name}}">
                     </div>
                 </div>
                 <input type="submit" value="Сохранить" class="border p-3">

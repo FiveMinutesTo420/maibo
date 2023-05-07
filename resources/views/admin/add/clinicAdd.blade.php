@@ -11,7 +11,7 @@
                         <p>Наименование</p>
                     </div>
                     <div>
-                        <input type="text" name="name" class="border p-2 w-full">
+                        <input type="text" name="name" required class="border p-2 w-full">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -19,7 +19,7 @@
                         <p>Описание</p>
                     </div>
                     <div>
-                        <input type="text" name="description" class="border p-2 w-full">
+                        <input type="text" name="description" required class="border p-2 w-full">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -27,7 +27,7 @@
                         <p>Адрес</p>
                     </div>
                     <div>
-                        <input type="text" name="address" class="border p-2 w-full">
+                        <input type="text" name="address" required class="border p-2 w-full">
                     </div>
                 </div>
                 <div class="flex flex-col">

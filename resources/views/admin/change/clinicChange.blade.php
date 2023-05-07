@@ -11,7 +11,7 @@
                         <p>Наименование</p>
                     </div>
                     <div>
-                        <input type="text" name="name" class="border p-2 w-full" value="{{$clinic->name}}">
+                        <input type="text" name="name" required class="border p-2 w-full" value="{{$clinic->name}}">
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -19,7 +19,7 @@
                         <p>Описание</p>
                     </div>
                     <div>
-                        <textarea type="text" rows="10" cols="50" name="description" class="border p-2 " >{!!$clinic->description!!}</textarea>
+                        <textarea type="text" rows="10" required cols="50" name="description" class="border p-2 " >{!!$clinic->description!!}</textarea>
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -27,7 +27,7 @@
                         <p>Адрес</p>
                     </div>
                     <div>
-                        <input type="text" name="address" class="border p-2 w-full" value="{{$clinic->address}}">
+                        <input type="text" name="address" required class="border p-2 w-full" value="{{$clinic->address}}">
                     </div>
                 </div>
                 <div class="flex flex-col">
