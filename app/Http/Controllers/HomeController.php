@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use Nette\Utils\DateTime;
 
 class HomeController extends Controller
 {
@@ -63,10 +64,12 @@ class HomeController extends Controller
         $data = $request->all();
         $data['doctor_id'] = $doctor->id;
         $data['clinic_id'] = $clinic->id;
-        if ($data['date'] == null) {
-            return back()->with('error', 'Выберите день');
+        if (DateTime::createFromFormat('Y-m-d H:i:s', $data['date']) !== false) {
+            Appointment::create($data);
+            $date = date_create($data['date']);
+
+            return back()->with('success', 'Ваша заявка была успешно принята. <br> Явиться в ' . $clinic->address . ". <br> В назначенное время: " . $date->format('d.m.Y - H:i'));
         }
-        Appointment::create($data);
-        return back()->with('success', 'Ваша заявка была успешно принята. <br> Явиться в ' . $clinic->address . ". <br> В назначенное время:" . $data['date']);
+        return back()->with('error', 'Выберите дату!');
     }
 }
