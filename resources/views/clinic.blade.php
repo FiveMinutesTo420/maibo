@@ -141,7 +141,6 @@ function merge(hClass,ti){
     let currentDate = `${year1}-${month1}-${day1} ${time}`;
 
     document.getElementById(hClass).setAttribute('value',currentDate);
-    alert(currentDate)
 }
 function changeDate(el,date,hClass){
     const dateFull = new Date();
