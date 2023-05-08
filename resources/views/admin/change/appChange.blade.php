@@ -130,7 +130,7 @@
                         <p>Комментарий посетителя</p>
                     </div>
                     <div>
-                        <textarea type="text" rows="2" cols="50" name="comment" class="border p-2 " >{!!$app->comment!!}</textarea>
+                        <textarea type="text" rows="2" cols="50" name="comment" class="border p-2 max-w-full" >{!!$app->comment!!}</textarea>
                     </div>
                 </div>
                 <div class="flex flex-col">
