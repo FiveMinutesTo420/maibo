@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-#TODO:: Редактирование и добавление специалистов клиники.Редактирование и добавление организаций.Редактирование и добавление услуг.Возможность изменения и удаления записей в датах.
+#TODO::Возможность изменения и удаления записей в датах.
 Route::get('/', HomeController::class);
 Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors');
 Route::get('/clinics', [HomeController::class, 'clinics'])->name('clinics');
@@ -34,3 +34,7 @@ Route::get('/admin/clinic/change/{clinic}', [AdminController::class, 'changeClin
 Route::post('/admin/clinic/change/store/{clinic}', [AdminController::class, 'UpdateStoreClinic'])->name('store.change.clinic');
 
 Route::get('/admin/clinic/delete/{clinic}', [AdminController::class, 'DeleteClinic'])->name('delete.clinic');
+
+Route::get('/admin/delete/app/{app}', [AdminController::class, 'deleteApp'])->name('delete.app');
+Route::get('/admin/change/app/{app}', [AdminController::class, 'UpdateApp'])->name('update.app');
+Route::post('/admin/store/app/{app}', [AdminController::class, 'UpdateStoreApp'])->name('update.store.app');

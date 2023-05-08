@@ -2,7 +2,43 @@
 @section('title',"Admin panel")
 @section('content')
 <div class="lg:w-[64%] w-[80%] mx-auto py-4">
+    
     <div class="flex flex-col space-y-8">
+        <div class="flex flex-col space-y-8">
+            <p class="text-xl font-semibold">Записи</p>
+
+            <div class="flex flex-col space-y-4 max-h-[53vh] overflow-y-scroll">
+                @foreach($appointments as $app)
+                <div class="lg:flex p-4 lg:space-x-4 border rounded space-y-4 lg:space-y-0 items-center  justify-between">
+                    <div class="w-full">
+                        <div class="text-lg pb-2">
+                            Запись на @php
+                            $date = date_create($app->date);
+                            echo "<b>" . $date->format('d.m.Y - H:i') . "</b>";
+                        @endphp <br>
+                        </div>
+
+                    <div class="flex flex-col mt-2 space-y-1">
+                        <div><span class="font-semibold">Посетитель:</span>  <br>{{$app->fullName}} <br></div> 
+                        <div><span class="font-semibold">Специалист: </span><br>  {{$app->doctor->surname}} {{$app->doctor->name}}           {{$app->doctor->patronymic}}               <br></div>
+                        <div><span class="font-semibold">Клиника:</span> <br> {{$app->clinic->name}}, {{$app->clinic->address}} <br></div>
+                        
+                    </div>
+
+
+                </div>
+                    
+                    
+                    <p></p>
+                    <div class="flex">
+                        <a href="{{route('update.app',$app)}}" class="p-4 border w-40 text-center">Редактировать</a>
+                        <a href="{{route('delete.app',$app)}}" class="p-4 border w-40 text-center">Удалить</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+    
+        </div>
         <p class="text-xl font-semibold">Специалисты</p>
         <a href="{{route('docAdd')}}" class="p-4 border w-full lg:w-60 text-center">+ Добавить специалиста</a>
         <div class="flex flex-col space-y-4 h-[53vh] overflow-y-scroll">

@@ -119,4 +119,23 @@ class AdminController extends Controller
         $clinic->delete();
         return back()->with('success', "Клиника была удалена");
     }
+    public function deleteApp(Appointment $app)
+    {
+        $app->delete();
+        return back()->with("success", "Запись была удалена");
+    }
+    public function UpdateApp(Appointment $app)
+    {
+        $doctors = Doctor::orderByDesc('id')->get();
+
+        return view('admin.change.appChange', compact('app', 'doctors'));
+    }
+    public function UpdateStoreApp(Request $request, Appointment $app)
+    {
+        $data = $request->all();
+        $data['clinic_id'] = Doctor::where('id', $data['doctor_id'])->first()->clinic->id;
+        $app->update($data);
+        $app->save();
+        return back()->with('success', 'Запись была редактирована');
+    }
 }

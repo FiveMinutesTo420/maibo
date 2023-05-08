@@ -77,7 +77,7 @@
                     <p class="text-lg">Запись к врачу {{$doctor->surname}} {{$doctor->name}} {{$doctor->patronymic}}</p>
                     <div class="flex mt-4">
                         Выберите время: 
-                        <select id="time" onchange="timeChange()">
+                        <select id="time{{$doctor->id}}" onchange="timeChange()">
                             <option value="6:00" >6:00</option>
                             <option value="7:00">7:00</option>
                             <option value="8:00">8:00</option>
@@ -112,7 +112,7 @@
                     </div>
 
 
-                    <form action="{{route('appointment',[$doctor->clinic->id,$doctor->id])}}" method="POST" class="mt-4 flex flex-col lg:w-[40%] space-y-4">
+                    <form action="{{route('appointment',[$doctor->clinic->id,$doctor->id])}}" onsubmit="merge('dateHidden{{$doctor->id}}','time{{$doctor->id}}')" method="POST" class="mt-4 flex flex-col lg:w-[40%] space-y-4">
                         @csrf
                         <input type="hidden" name="date" value="" id="dateHidden{{$doctor->id}}">
                         <input type="text" name="fullName" required placeholder="Ваше полное имя" class="p-4 border outline-none">
@@ -129,6 +129,20 @@
     </div>
 
 <script>
+const dateFull = new Date();
+var year1;
+var month1;
+var day1;
+function merge(hClass,ti){
+    var e = document.getElementById(ti);
+
+    var time = e.options[e.selectedIndex].value + ":00";
+
+    let currentDate = `${year1}-${month1}-${day1} ${time}`;
+
+    document.getElementById(hClass).setAttribute('value',currentDate);
+    alert(currentDate)
+}
 function changeDate(el,date,hClass){
     const dateFull = new Date();
     if(date < 10){
@@ -137,14 +151,13 @@ function changeDate(el,date,hClass){
     let day = date;
     let month = dateFull.getMonth() + 1;
     let year = dateFull.getFullYear();
+    year1 = year
+    day1 = day
+    month1 = month
     if(month < 10){
         month = "0"+month
     }
-    var e = document.getElementById("time");
-    var time = e.options[e.selectedIndex].value + ":00";
 
-    let currentDate = `${year}-${month}-${day} ${time}`;
-    document.getElementById(hClass).setAttribute('value',currentDate);
     if(document.getElementById('selected')!=null){
         let elementsGreen = document.getElementById('selected');
         elementsGreen.classList.remove('border-green-500')
@@ -152,7 +165,6 @@ function changeDate(el,date,hClass){
     }
     el.classList.add('border-green-500')
     el.id = 'selected'
-
 }
 function openDate(cl){
     if(document.getElementById(cl).classList.contains('hidden')){
@@ -163,6 +175,7 @@ function openDate(cl){
 
     }
 }
+
 </script>
 
 @endsection
