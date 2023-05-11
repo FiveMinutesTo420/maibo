@@ -8,7 +8,9 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\ClinicType;
 use App\Models\Service;
+use App\Models\Speciality;
 use Illuminate\Support\Str;
+use App\Models\DoctorSpeciality;
 
 class AdminController extends Controller
 {
@@ -26,7 +28,8 @@ class AdminController extends Controller
         $clinics = Clinic::orderByDesc('id')->get();
         $services = Service::orderByDesc('id')->get();
         $appointments = Appointment::orderByDesc('id')->get();
-        return view('admin.add.doctorAdd', compact('clinics'));
+        $specs = Speciality::orderByDesc('id')->get();
+        return view('admin.add.doctorAdd', compact('clinics', 'specs'));
     }
     public function docAddOk(Request $request)
     {
@@ -36,8 +39,18 @@ class AdminController extends Controller
             'patronymic' => 'required',
             'clinic_id' => 'required',
             'experience' => 'required',
+            'specialities' => 'required'
         ]);
-        if (Doctor::create($data)) {
+        $specs = $data['specialities'];
+        unset($data['specialities']);
+
+        if ($doc = Doctor::create($data)) {
+            foreach ($specs as $s) {
+                DoctorSpeciality::create([
+                    'doctor_id' => $doc->id,
+                    'speciality_id' => $s
+                ]);
+            }
             return to_route('admin');
         }
     }
@@ -52,11 +65,30 @@ class AdminController extends Controller
         $clinics = Clinic::orderByDesc('id')->get();
         $services = Service::orderByDesc('id')->get();
         $appointments = Appointment::orderByDesc('id')->get();
-        return view('admin.change.doctorChange', compact('doctor', 'clinics'));
+        $specs = Speciality::orderByDesc('id')->get();
+        return view('admin.change.doctorChange', compact('doctor', 'clinics', 'specs'));
     }
     public function docEditOk(Request $request, Doctor $doctor)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'surname' => 'required',
+            'name' => 'required',
+            'patronymic' => 'required',
+            'clinic_id' => 'required',
+            'experience' => 'required',
+            'specialities' => 'required'
+        ]);
+        $specs = $data['specialities'];
+        unset($data['specialities']);
+        foreach ($doctor->specialities as $sps) {
+            $sps->delete();
+        }
+        foreach ($specs as $s) {
+            DoctorSpeciality::create([
+                'doctor_id' => $doctor->id,
+                'speciality_id' => $s
+            ]);
+        }
         $doctor->update($data);
         $doctor->save();
         return back()->with('success', "Данные специалиста были редактированы");

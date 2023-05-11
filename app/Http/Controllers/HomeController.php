@@ -9,6 +9,8 @@ use App\Models\Service;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Nette\Utils\DateTime;
 
 class HomeController extends Controller
@@ -71,5 +73,33 @@ class HomeController extends Controller
             return back()->with('success', 'Ваша заявка была успешно принята. <br> Явиться в ' . $clinic->address . ". <br> В назначенное время: " . $date->format('d.m.Y - H:i'));
         }
         return back()->with('error', 'Выберите дату!');
+    }
+    public function auth()
+    {
+        return view('auth');
+    }
+    public function authStore(Request $request)
+    {
+        $credentials = $request->validate([
+            'login' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return to_route('home')->with('success', 'Вы успешно авторизовались');
+        }
+
+        return to_route('auth')->with('error', 'Неверный логин или пароль');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return to_route('home')->with('success', 'Вы успешно вышли');
     }
 }

@@ -54,7 +54,6 @@
                             @endforeach
                         </div>
                         <p class="text-xs ml-1">Стаж {{$doctor->experience}} лет</p>
-    
                     </div>
                 </div>
                 <div class="lg:w-[40%] text-sm flex flex-col items-center lg:border-l p-4 justify-center space-y-2">

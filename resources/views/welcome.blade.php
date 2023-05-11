@@ -15,7 +15,7 @@
     -->
     </div>
 
-    <div class="lg:flex mt-8  mx-auto lg:justify-between space-y-8 lg:space-y-0">
+    <div class="lg:flex mt-8  mx-auto lg:justify-center space-y-8 lg:space-y-0">
         <div class="flex flex-col w-[300px]">
             <p class="text-xl ">Врачи</p>
             <div class="flex flex-col space-y-3 mt-4">
@@ -32,15 +32,6 @@
                     <a href="{{route('service',$service->slug)}}" class="border-b w-fit text-[#006699] border-[#006699]">{{$service->name}}</a>
                 @endforeach
 
-            </div>
-        </div>
-        <div class="flex flex-col w-[300px] ">
-            <p class="text-xl">Диагностика</p>
-            <div class="flex flex-col space-y-3 mt-4">
-                @foreach($diagnostis as $diagnos)
-                    <a href="" class="border-b w-fit text-[#006699] border-[#006699]">{{$diagnos->name}}</a>
-                @endforeach
-                <a href="" class="border-b w-fit text-[#006699] border-[#006699]">Другие виды диагностики</a>
             </div>
         </div>
     </div>
