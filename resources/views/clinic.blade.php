@@ -89,8 +89,8 @@
                             <option value="16:00">16:00</option>
                         </select>
                     </div>
-                    
-                    <div class="flex flex-wrap lg:w-[40%] w-[300px] text-xs mt-4">
+                    <p class="text-lg mt-4" id="month">{{$month}}</p>
+                    <div class="flex flex-wrap lg:w-[40%] w-[300px] text-xs ">
                         <div class="lg:h-9 lg:w-9 h-4 w-4 m-2 p-3 flex items-center justify-center">Пн</div>
                         <div class="lg:h-9 lg:w-9 h-4 w-4 m-2 p-3 flex items-center justify-center">Вт</div>
                         <div class="lg:h-9 lg:w-9 h-4 w-4 m-2 p-3 flex items-center justify-center">Ср</div>
@@ -129,7 +129,9 @@
     </div>
 
 <script>
+
 const dateFull = new Date();
+
 var year1;
 var month1;
 var day1;

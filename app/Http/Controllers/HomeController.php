@@ -53,8 +53,11 @@ class HomeController extends Controller
     }
     public function clinic(Request $request, $clinic)
     {
+        $rmonth = date('m');
+
+        $month = array("01" => 'Январь', "02" =>  'Февраль', "03" => 'Март', "04" => 'Апрель', "05" => 'Май', "06" => 'Июнь', "07" => 'Июль', "08" => 'Август', "09" => 'Сентябрь', "10" => 'Октябрь', "11" => 'Ноябрь', "12" => 'Декабрь');
         $clinic = Clinic::where('slug', $clinic)->first();
-        return view('clinic', compact('clinic'));
+        return view('clinic', ['clinic' => $clinic, 'month' => $month[$rmonth]]);
     }
     public function service(Request $request, $service)
     {
