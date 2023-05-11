@@ -42,8 +42,7 @@
                             <a href="{{route('logout')}}" class="hover:border-black border-transparent border-b ">Выйти</a>
                             
                         @endif
-                    @else
-                        <a href="{{route('auth')}}" class="hover:border-black border-transparent border-b ">Войти</a>
+   
                     @endif
                 </div>
                 <img src="{{url('images/burger.svg')}}" width="20" class="lg:hidden cursor-pointer" id="menu" alt="">
@@ -59,8 +58,7 @@
                             <a href="{{route('logout')}}" class="hover:border-black border-transparent border-b pb-2">Выйти</a>
 
                         @endif
-                    @else
-                        <a href="{{route('admin')}}" class="hover:border-black border-transparent border-b pb-2">Войти</a>
+            
                     @endif
                 </div>
             </div>

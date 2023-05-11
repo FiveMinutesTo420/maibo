@@ -14,7 +14,6 @@
         </form>
     -->
     </div>
-
     <div class="lg:flex mt-8  mx-auto lg:justify-center space-y-8 lg:space-y-0">
         <div class="flex flex-col w-[300px]">
             <p class="text-xl ">Врачи</p>
