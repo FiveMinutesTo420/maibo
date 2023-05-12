@@ -72,8 +72,13 @@
         @endif
         @yield('content')
     </main>
-    <footer>
-        <div class="lg:w-[64%] w-[80%] mx-auto">
+    <footer class="py-8 bg-gray-100 mt-6">
+        <div class="lg:w-[64%] w-[80%] mx-auto lg:flex lg:space-x-4 ">
+            <a href="/" class="font-semibold text-xl flex items-center space-x-3">
+                <img src="{{url('images/favicon.png')}}" alt="" class="w-8">
+                <p>MAIBO</p>
+            </a>
+            <p class="uppercase text-xs lg:text-base text-gray-300">имеются противопоказания, необходима консультация специалиста. <br>предложение не является публичной офертой </p>
         </div>
     </footer>
     </div>

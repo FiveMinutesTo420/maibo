@@ -118,6 +118,12 @@
                         <input type="text" name="fullName" required placeholder="Ваше полное имя" class="p-4 border outline-none">
                         <input type="text" name="phone_number" required placeholder="Ваш контактный номер" class="p-4 border outline-none">
                         <textarea name="comment" cols="35" rows="2" placeholder="Комментарий (необязательно)" class="p-4 border outline-none"></textarea>
+                        
+                        <div class="flex space-x-3">
+                            <input type="checkbox" class="cursor-pointer" required id="checkbox">
+                            <label for="checkbox" class="lg:text-sm text-xs cursor-pointer">Согласен с обработкой моих персональных данных</label>
+                        </div>
+                        
                         <input type="submit" value="Записаться" class="border py-4 cursor-pointer">
                     </form>
 
