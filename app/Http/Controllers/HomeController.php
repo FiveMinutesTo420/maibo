@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Clinic;
 use App\Models\Diagnostic;
 use App\Models\Doctor;
+use App\Models\DoctorSpeciality;
 use App\Models\Service;
+use App\Models\ClinicType;
+
 use App\Models\Speciality;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\ClinicService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Nette\Utils\DateTime;
 
 class HomeController extends Controller
@@ -104,5 +109,68 @@ class HomeController extends Controller
         $request->session()->regenerateToken();
 
         return to_route('home')->with('success', 'Вы успешно вышли');
+    }
+    public function myClinics()
+    {
+        return view('userClinics');
+    }
+    public function changeClinic(Clinic $clinic)
+    {
+        $types = ClinicType::all();
+        $services = Service::orderByDesc('id')->get();
+        $specs = Speciality::all();
+
+
+        if (!auth()->user()->clinics->contains('id', $clinic->id)) {
+            return to_route('home');
+        }
+
+        return view('admin.change.clinicChange', compact('types', 'clinic', 'services', 'specs'));
+    }
+    public function AddDoctorClinic(Request $request, Clinic $clinic)
+    {
+        if (!auth()->user()->clinics->contains('id', $clinic->id)) {
+            return to_route('home');
+        }
+        $data = $request->validate([
+            'surname' => 'required',
+            'name' => 'required',
+            'patronymic' => 'required',
+            'experience' => 'required',
+            'specialities' => 'required'
+        ]);
+        $data['clinic_id'] = $clinic->id;
+        $specs = $data['specialities'];
+        unset($data['specialities']);
+
+        if ($doc = Doctor::create($data)) {
+            foreach ($specs as $s) {
+                DoctorSpeciality::create([
+                    'doctor_id' => $doc->id,
+                    'speciality_id' => $s
+                ]);
+            }
+            return back()->with('success', 'Специалист был добавлен');
+        }
+    }
+    public function StoreServiceClinic(Request $request, Clinic $clinic)
+    {
+        if (!auth()->user()->clinics->contains('id', $clinic->id)) {
+            return to_route('home');
+        }
+        $data = $request->all();
+        $data['clinic_id'] = $clinic->id;
+        ClinicService::create($data);
+        return back()->with('success', 'Услуга была добавлена');
+    }
+    public function UpdateStoreClinic(Request $request, Clinic $clinic)
+    {
+        if (!auth()->user()->clinics->contains('id', $clinic->id)) {
+            return to_route('home');
+        }
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['name']);
+        $clinic->update($data);
+        return back()->with('success', "Клиника была успешно обновлена");
     }
 }

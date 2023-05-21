@@ -39,9 +39,12 @@
                     @if(Auth::check())
                         @if(auth()->user()->status == 1)
                             <a href="{{route('admin')}}" class="hover:border-black border-transparent border-b ">Админ панель</a>
-                            <a href="{{route('logout')}}" class="hover:border-black border-transparent border-b ">Выйти</a>
                             
+                        @else
+                            <a href="{{route('myClinics')}}" class="hover:border-black border-transparent border-b ">Мои учреждения</a>
+
                         @endif
+                        <a href="{{route('logout')}}" class="hover:border-black border-transparent border-b ">Выйти</a>
    
                     @endif
                 </div>
@@ -55,9 +58,10 @@
                     @if(Auth::check())
                         @if(auth()->user()->status == 1)
                             <a href="{{route('admin')}}" class="hover:border-black border-transparent border-b pb-2">Админ панель</a>
-                            <a href="{{route('logout')}}" class="hover:border-black border-transparent border-b pb-2">Выйти</a>
-
+                        @else
+                            <a href="{{route('myClinics')}}" class="hover:border-black border-transparent border-b pb-2 ">Мои учреждения</a>
                         @endif
+                        <a href="{{route('logout')}}" class="hover:border-black border-transparent border-b pb-2 ">Выйти</a>
             
                     @endif
                 </div>

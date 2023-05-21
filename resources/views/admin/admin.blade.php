@@ -4,6 +4,8 @@
 <div class="lg:w-[64%] w-[80%] mx-auto py-4">
     
     <div class="flex flex-col space-y-8">
+        <p class="text-xl font-semibold">Пользователи</p>
+        <a href="{{route('regUser')}}" class="p-4 border w-full lg:w-60 text-center">+ Добавить пользователя</a>
         <div class="flex flex-col space-y-8">
             <p class="text-xl font-semibold">Записи</p>
 

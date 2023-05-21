@@ -7,10 +7,14 @@ use App\Models\Clinic;
 use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\ClinicType;
+use App\Models\ClinicService;
+
 use App\Models\Service;
 use App\Models\Speciality;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\DoctorSpeciality;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -52,6 +56,30 @@ class AdminController extends Controller
                 ]);
             }
             return to_route('admin');
+        }
+    }
+    public function AddDoctorClinic(Request $request, Clinic $clinic)
+    {
+
+        $data = $request->validate([
+            'surname' => 'required',
+            'name' => 'required',
+            'patronymic' => 'required',
+            'experience' => 'required',
+            'specialities' => 'required'
+        ]);
+        $data['clinic_id'] = $clinic->id;
+        $specs = $data['specialities'];
+        unset($data['specialities']);
+
+        if ($doc = Doctor::create($data)) {
+            foreach ($specs as $s) {
+                DoctorSpeciality::create([
+                    'doctor_id' => $doc->id,
+                    'speciality_id' => $s
+                ]);
+            }
+            return back()->with('success', 'Специалист был добавлен');
         }
     }
     public function DoctorDelete(Doctor $doctor)
@@ -125,7 +153,8 @@ class AdminController extends Controller
     public function addClinic()
     {
         $types = ClinicType::all();
-        return view('admin.add.clinicAdd', compact('types'));
+        $users = User::orderByDesc('id')->get();
+        return view('admin.add.clinicAdd', compact('types', 'users'));
     }
     public function StoreClinic(Request $request)
     {
@@ -137,7 +166,16 @@ class AdminController extends Controller
     public function changeClinic(Clinic $clinic)
     {
         $types = ClinicType::all();
-        return view('admin.change.clinicChange', compact('types', 'clinic'));
+        $services = Service::orderByDesc('id')->get();
+        $specs = Speciality::all();
+        return view('admin.change.clinicChange', compact('types', 'clinic', 'services', 'specs'));
+    }
+    public function StoreServiceClinic(Request $request, Clinic $clinic)
+    {
+        $data = $request->all();
+        $data['clinic_id'] = $clinic->id;
+        ClinicService::create($data);
+        return back()->with('success', 'Услуга была добавлена');
     }
     public function UpdateStoreClinic(Request $request, Clinic $clinic)
     {
@@ -169,5 +207,23 @@ class AdminController extends Controller
         $app->update($data);
         $app->save();
         return back()->with('success', 'Запись была редактирована');
+    }
+    public function reg()
+    {
+        return view('admin.reg');
+    }
+    public function regStore(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'patronymic' => 'required',
+            'email' => 'required|unique:users',
+            'login' => 'required|unique:users|min:5',
+            'password' => 'required|min:5',
+        ]);
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+        return back()->with('success', "Пользователь был успешно добавлен!");
     }
 }

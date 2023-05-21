@@ -36,20 +36,7 @@
                 
                 
             </div>
-            <div class="flex flex-col  space-y-4">
-                <h1 class="text-xl border-b pb-4">Диагностики</h1>
-                
-                @forelse($clinic->diagnostics as $s)
-                <div class="flex border p-4 justify-between">
-                    <p>{{$s->diagnostic->name}}</p>
-                    <p>от {{$s->price}} руб.</p>
-                </div>
-                @empty
-                    <p>Нет предлагаемых диагностик</p>
-                @endforelse
-                
-                
-            </div>
+
             <div class="flex flex-col  space-y-4">
                 <h1 class="text-xl pb-4 border-b">Врачи клиники</h1>
                 @forelse($clinic->doctors as $doctor)

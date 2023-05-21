@@ -42,6 +42,18 @@
                         </select>
                     </div>
                 </div>
+                <div class="flex flex-col">
+                    <div class="name">
+                        <p>Владелец</p>
+                    </div>
+                    <div>
+                        <select name="user_id" class="py-3 border w-full">
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}" @if($user->id == 1) selected @endif>{{$user->surname}} {{$user->name}} {{$user->patronymic}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <input type="submit" value="Добавить" class="border p-3">
             </form>
     </div>
