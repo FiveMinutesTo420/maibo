@@ -16,6 +16,9 @@ Route::post('/appointment/{clinic}/{doctor}', [HomeController::class, 'appoint']
 Route::get('/auth', [HomeController::class, 'auth'])->name('auth');
 Route::post("/auth", [HomeController::class, 'authStore'])->name('auth.store');
 Route::middleware(['auth'])->group(function () {
+    Route::get("/user/clinic/add", [HomeController::class, 'addClinicUser'])->name('add.clinic.user');
+    Route::post('/user/clinic/store', [HomeController::class, 'StoreClinic'])->name('store.clinic.user');
+
     Route::get("/my/clinics", [HomeController::class, 'myClinics'])->name('myClinics');
 });
 

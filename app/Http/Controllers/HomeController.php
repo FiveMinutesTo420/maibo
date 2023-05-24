@@ -127,6 +127,19 @@ class HomeController extends Controller
 
         return view('admin.change.clinicChange', compact('types', 'clinic', 'services', 'specs'));
     }
+    public function StoreClinic(Request $request)
+    {
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['name']);
+        $data['user_id'] = auth()->user()->id;
+        Clinic::create($data);
+        return back()->with('success', "Клиника была успешно добавлена");
+    }
+    public function addClinicUser()
+    {
+        $types = ClinicType::all();
+        return view('userAddClinic', compact('types'));
+    }
     public function AddDoctorClinic(Request $request, Clinic $clinic)
     {
         if (!auth()->user()->clinics->contains('id', $clinic->id)) {

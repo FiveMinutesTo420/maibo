@@ -4,10 +4,7 @@
 <div class="lg:w-[64%] w-[80%] mx-auto py-4">
     <div class="flex flex-col space-y-4">
         <h1 class="text-2xl mt-4">Мои учреждения</h1>
-        <div class="flex space-x-2 items-center">
-
-
-        </div>
+        <a href="{{route('add.clinic.user')}}" class="p-4 border w-full lg:w-60 text-center">+ Добавить клинику</a>
 
         @forelse(auth()->user()->clinics as $clinic)
             <div class="lg:flex p-4 lg:space-x-4 border rounded  justify-between">
