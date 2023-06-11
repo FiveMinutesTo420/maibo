@@ -1,12 +1,12 @@
 @extends('layouts.layout')
 @section('title','Врачи')
 @section('content')
-<div class="lg:w-[64%] w-[80%] mx-auto py-4">
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col space-y-4 p-12 pt-4 pb-0">
         <h1 class="text-2xl mt-4">Врачи Якутска</h1>
-        <div class="flex space-x-2 items-center">
-            <p>Фильтр:</p>
+        <div class="lg:flex space-x-2 items-center">
+            <p>Специальность:</p>
             <form>
+                <input type="hidden" name="clinic" value="{{Request::get('clinic')}}">
                 <select name="speciality" onchange="this.form.submit()" class="p-2">
                     <option value="all">Все</option>
                     @foreach($specialities as $sp)
@@ -14,6 +14,22 @@
                     @endforeach
                 </select>
             </form>
+            {{--
+                
+                            <p class="ml-4">Клиника:</p>
+            <form>
+                <input type="hidden" name="speciality" value="{{Request::get('speciality')}}">
+
+                <select name="clinic" onchange="this.form.submit()" class="p-2">
+                    <option value="all">Все</option>
+                    @foreach($clinics as $cl)
+                        <option value="{{$cl->id}}" @if(Request::get('clinic') == $cl->id) selected @endif>{{$cl->name}}</option>
+                    @endforeach
+                </select>
+            </form>
+                
+                
+                --}}
 
         </div>
 
@@ -41,6 +57,5 @@
         @endforeach
     </div>
 
-</div>
 
 @endsection

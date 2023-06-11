@@ -1,8 +1,7 @@
 @extends('layouts.layout')
 @section('title',$clinic->name)
 @section('content')
-<div class="lg:w-[64%] w-[80%] mx-auto py-4">
-    <div class="flex flex-col space-y-8">
+    <div class="flex flex-col space-y-8 p-12">
 
 
             <div class="flex  space-x-4    justify-between">

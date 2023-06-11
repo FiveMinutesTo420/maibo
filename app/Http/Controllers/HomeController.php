@@ -29,27 +29,39 @@ class HomeController extends Controller
     }
     public function doctors(Request $request)
     {
+        //TODO::Доработать фильтр клиники и специальности
         $doctors = Doctor::orderByDesc('id')->get();
         $specialities = Speciality::all();
+        $clinics = Clinic::orderByDesc('id')->get();
+        $doctorsWithSpec = [];
+        if ($request->has('clinic') or $request->has('speciality')) {
+            if ($request->has('clinic')) {
+                if ($request->clinic != 'all') {
+                    $doctorsWithSpec = Doctor::where('clinic_id', $request->clinic)->get()->toArray();
+                }
+            }
+            if ($request->has('speciality')) {
+                if ($request->speciality != 'all') {
 
-        if ($request->has('speciality')) {
-            if ($request->speciality != 'all') {
-                $doctorsWithSpec = [];
-                foreach ($doctors as $d) {
-                    foreach ($d->specialities as $sp) {
-                        if ($sp->speciality->id == $request->speciality) {
-                            array_push($doctorsWithSpec, $d);
-                            break;
+                    foreach ($doctors as $d) {
+                        foreach ($d->specialities as $sp) {
+                            if ($sp->speciality->id == $request->speciality) {
+                                array_push($doctorsWithSpec, $d);
+                                break;
+                            }
                         }
                     }
                 }
-                return view('doctors', [
-                    'doctors' => $doctorsWithSpec,
-                    'specialities' => $specialities
-                ]);
             }
+
+            return view('doctors', [
+                'doctors' => $doctorsWithSpec,
+                'specialities' => $specialities,
+                'clinics' => $clinics
+            ]);
         }
-        return view('doctors', compact('doctors', 'specialities'));
+
+        return view('doctors', compact('doctors', 'specialities', 'clinics'));
     }
     public function clinics(Request $request)
     {
@@ -112,6 +124,7 @@ class HomeController extends Controller
     }
     public function myClinics()
     {
+
         return view('userClinics');
     }
     public function changeClinic(Clinic $clinic)
