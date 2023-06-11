@@ -2,7 +2,7 @@
 @section('title',"Главная")
 @section('content')
 <div class="flex flex-col space-y-8">
-    <div>
+    <div class="pb-4">
         <div class="absolute lg:w-[64%] w-[100%] ">
             <img src="{{url('images/welcome.png')}}" alt="" class="lg:h-[40vh] h-[30vh]  w-[100%]">
         </div>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-2 px-6 space-y-4">
+    <div class="lg:mt-2 mt-18 px-6 space-y-4">
         <div class="text-3xl text-[#48466D]">Новости</div>
         <!-- Slider main container -->
         <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
